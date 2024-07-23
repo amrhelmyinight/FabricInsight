@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "amrtest_Nofabric_LH_CSV_Import"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9030d369-3179-465c-b3b0-a77762dca138"
+  }
+}

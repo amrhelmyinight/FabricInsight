@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "TstRp"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f33d2720-ebb4-4bdc-ad65-cb8b673c1f38"
+  }
+}

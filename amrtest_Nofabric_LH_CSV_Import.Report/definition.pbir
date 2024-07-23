@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../amrtest_Nofabric_LH_CSV_Import.SemanticModel"
+    },
+    "byConnection": null
+  }
+}
