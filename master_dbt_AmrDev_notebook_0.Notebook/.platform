@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "master_dbt_AmrDev_notebook_0",
+    "description": "Notebook Hash:dd89b6404219411e26cdec542bd1c3f77ca997bb8a29e0ac75473c55693bbb10"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "43c0c3f2-43e5-4a4c-b7aa-68fddffedce2"
+  }
+}

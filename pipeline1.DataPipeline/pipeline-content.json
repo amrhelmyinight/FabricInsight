@@ -1,0 +1,172 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "BinarySource",
+            "storeSettings": {
+              "type": "HttpReadSettings",
+              "requestMethod": "GET",
+              "additionalHeaders": "Authorization: Bearer 255531-j382lj4gHwUAvKwpSQWXg"
+            },
+            "formatSettings": {
+              "type": "BinaryReadSettings"
+            },
+            "datasetSettings": {
+              "type": "Binary",
+              "typeProperties": {
+                "location": {
+                  "type": "HttpServerLocation"
+                },
+                "compression": {
+                  "type": "deflate",
+                  "level": "Optimal"
+                }
+              },
+              "externalReferences": {
+                "connection": "c65344ef-bbaf-4b37-9a21-6db3fdd508cd"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "BinarySink",
+            "storeSettings": {
+              "type": "LakehouseWriteSettings"
+            },
+            "datasetSettings": {
+              "type": "Binary",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "Current",
+                  "fileName": "User.zip"
+                },
+                "compression": {
+                  "type": "deflate",
+                  "level": "Optimal"
+                }
+              },
+              "linkedService": {
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "58c4b60e-7589-42ec-8aa4-af12937f24d8",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                },
+                "name": "lh_Viva_Raw"
+              },
+              "annotations": []
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Copy_Users",
+        "dependsOn": []
+      },
+      {
+        "type": "Copy",
+        "typeProperties": {
+          "source": {
+            "type": "BinarySource",
+            "storeSettings": {
+              "type": "LakehouseReadSettings",
+              "recursive": true
+            },
+            "formatSettings": {
+              "type": "BinaryReadSettings",
+              "compressionProperties": {
+                "type": "ZipDeflateReadSettings"
+              }
+            },
+            "datasetSettings": {
+              "type": "Binary",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "Current",
+                  "fileName": "User.zip"
+                },
+                "compression": {
+                  "type": "ZipDeflate",
+                  "level": "Optimal"
+                }
+              },
+              "linkedService": {
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "58c4b60e-7589-42ec-8aa4-af12937f24d8",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                },
+                "name": "lh_Viva_Raw"
+              },
+              "annotations": []
+            }
+          },
+          "sink": {
+            "type": "BinarySink",
+            "storeSettings": {
+              "type": "LakehouseWriteSettings",
+              "copyBehavior": "PreserveHierarchy"
+            },
+            "datasetSettings": {
+              "type": "Binary",
+              "typeProperties": {
+                "location": {
+                  "type": "LakehouseLocation",
+                  "folderPath": "Current/User"
+                }
+              },
+              "linkedService": {
+                "properties": {
+                  "type": "Lakehouse",
+                  "typeProperties": {
+                    "artifactId": "58c4b60e-7589-42ec-8aa4-af12937f24d8",
+                    "workspaceId": "00000000-0000-0000-0000-000000000000",
+                    "rootFolder": "Files"
+                  },
+                  "annotations": []
+                },
+                "name": "lh_Viva_Raw"
+              },
+              "annotations": []
+            }
+          },
+          "enableStaging": false
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Unzip Users",
+        "dependsOn": [
+          {
+            "activity": "Copy_Users",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
